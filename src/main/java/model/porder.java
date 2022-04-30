@@ -1,5 +1,15 @@
 package model;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+@Entity // Entity e = new Entity("porder");
+@Table(name="porder") // name of database
 public class porder {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String desk;
 	private Integer A;
@@ -25,6 +35,12 @@ public class porder {
 		this.sum = A*120+B*130+C*150+D*130+E*110+F*150;		
 	}
 
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
 	public String getDesk() {
 		return desk;
 	}
@@ -73,4 +89,10 @@ public class porder {
 	public void setSum(Integer sum) {
 		this.sum = sum;
 	}
+	@Override
+	public String toString() {
+		return "porder [id=" + id + ", desk=" + desk + ", A=" + A + ", B=" + B + ", C=" + C + ", D=" + D + ", E=" + E
+				+ ", F=" + F + ", sum=" + sum + "]";
+	}
+	
 }

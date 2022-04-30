@@ -12,6 +12,7 @@ public interface memberDao {
 	member getMember(int id);
 	List<member> queryMember(String username, String password);
 	boolean queryMember(String username);
+	boolean query(String username, String password);
 	
 	//修改
 	void updateMember(member m);

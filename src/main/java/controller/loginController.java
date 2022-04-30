@@ -1,18 +1,17 @@
 package controller;
-import java.io.IOException;     
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import dao.implMember;
 import model.member;
 @WebServlet("/loginController")
 public class loginController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-
+	private static final long serialVersionUID = 1L;	
 	
 	public loginController() {
 		super();
@@ -30,27 +29,27 @@ public class loginController extends HttpServlet {
 //		response.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("big5"); 
 		String username = request.getParameter("username");
-		String password = request.getParameter("password");
+		String password = request.getParameter("password");		
 		System.out.println(username);
-		member m = (member)new implMember().queryMember(username, password);
-		HttpSession session = request.getSession();
-		// 1. 客戶未要求當 member 會員存在時，要導入到其它頁面
-		//    query(username, password) 的帳號密碼判斷是否存在
-		/*
-		if(new implMember().query(username, password)) {
-			response.sendRedirect("member/loginSuccess.jsp");
-		} else {
-			response.sendRedirect("member/loginError.jsp");
-		} 
-		*/
-		// 2. 客戶有要求當 member 會員存在時，要導入到其它頁面 
-		//    藉由 session 來抓取 member 的物件，如果存在，導入到指定頁面
-		if(m!=null) {
-			session.setAttribute("M", m);
-			response.sendRedirect("member/loginSuccess.jsp");
-		} else {
-			response.sendRedirect("member/loginError.jsp");
-		}
-					
+		System.out.println(password);	
+		System.out.println(new implMember().queryMember("hi", "1234")); 
+//		member m = (member) new implMember().queryMember(username, password);		
+//		// 1. 客戶未要求當 member 會員存在時，要導入到其它頁面, query(username, password) 的帳號密碼判斷是否存在
+////		/*
+//		if(new implMember().query(username, password)) {
+//			response.sendRedirect("member/loginSuccess.jsp");
+//		} else {
+//			response.sendRedirect("member/loginError.jsp");
+//		} 
+////		*/
+//		// 2. 客戶有要求當 member 會員存在時，要導入到其它頁面, 藉由 session 來抓取 member 的物件，如果存在，導入到指定頁面
+////		/*
+//		if(m!=null) {
+//			request.getSession().setAttribute("M", m);
+//			response.sendRedirect("member/loginSuccess.jsp");
+//		} else {
+//			response.sendRedirect("member/loginError.jsp");
+//		}
+////		*/			
 	}
 }

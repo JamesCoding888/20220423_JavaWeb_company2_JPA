@@ -1,11 +1,9 @@
 package model;
-
-import javax.persistence.Entity; 
+import javax.persistence.Entity;  
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
 @Entity // Entity e = new Entity("member");
 @Table(name="member") // name of database
 public class member {
@@ -22,11 +20,11 @@ public class member {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public member(String name, String username, String password, String address, String phone, String mobile) {
+	public member(String username, String password, String name, String address, String phone, String mobile) {
 		super();
-		this.name = name;
 		this.username = username;
 		this.password = password;
+		this.name = name;
 		this.address = address;
 		this.phone = phone;
 		this.mobile = mobile;

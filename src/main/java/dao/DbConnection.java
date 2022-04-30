@@ -12,11 +12,14 @@ public class DbConnection {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("companyPersistence"); //名稱對應 <persistence-unit name="companyPersistence" >
 		EntityManager em = emf.createEntityManager();
 		System.out.println(em);
+		// 新增
 		member m = new member("sister", "1234", "jj", "taipei", "0800", "99999" );
 		EntityTransaction et = em.getTransaction();
 		et.begin();
 		em.persist(m);
 		et.commit();
+		// 查詢
+		
 	}
 	
 	public static EntityManager geDb() {

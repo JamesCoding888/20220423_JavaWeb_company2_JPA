@@ -1,16 +1,24 @@
 package dao;
-import java.util.List;       
+import java.util.List;         
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import model.member;
 public class implMember implements memberDao {
 	public static void main(String[] args) {				
-		List<member> l=new implMember().queryMember("1234", "jj");		
+		// 新增
+		member m = new member("hi", "12", "1", "1", "1", "2");
+		new implMember().addMember(m);
+		// 查詢
+		List<member> l=new implMember().queryMember("sister", "1234");		
 		System.out.println(l.size());
 		
 		boolean b=new implMember().queryMember("1234");		
-		System.out.println(b);	
+		System.out.println(b);
+		boolean b2=new implMember().query("1234","jj");
+		System.out.println(b2);
+
+		
 				
 	}
 	// 新增
@@ -53,6 +61,22 @@ public class implMember implements memberDao {
 		}		
 		return x;
 	}
+	
+	
+	@Override
+	public boolean query(String username, String password) {
+		EntityManager em=DbConnection.geDb();
+		String jpql = "select e from member e where e.username=?1 and e.password=?2";
+		Query query=em.createQuery(jpql);
+		query.setParameter(1, username);
+		query.setParameter(2, password);	
+		List<member> l=query.getResultList();		
+		boolean x=false;		
+		if(l.size()!=0) {
+			x=true;
+		}		
+		return x;
+	}
 	// 修改
 	@Override
 	public void updateMember(member m) {
@@ -75,7 +99,8 @@ public class implMember implements memberDao {
 	}
 }
 
-/*===============================================================================================
+/*==============================MainTest 用的語法如下:================================
+
 // 新增		
 member mAdd = new member("implmember", "1234", "james", "taipei", "888", "999");
 new implMember().addMember(mAdd);
