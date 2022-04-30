@@ -1,6 +1,7 @@
 package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,25 +32,30 @@ public class loginController extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");		
 		System.out.println(username);
-		System.out.println(password);	
-		System.out.println(new implMember().queryMember("hi", "1234")); 
-//		member m = (member) new implMember().queryMember(username, password);		
-//		// 1. 客戶未要求當 member 會員存在時，要導入到其它頁面, query(username, password) 的帳號密碼判斷是否存在
-////		/*
-//		if(new implMember().query(username, password)) {
-//			response.sendRedirect("member/loginSuccess.jsp");
-//		} else {
-//			response.sendRedirect("member/loginError.jsp");
-//		} 
-////		*/
-//		// 2. 客戶有要求當 member 會員存在時，要導入到其它頁面, 藉由 session 來抓取 member 的物件，如果存在，導入到指定頁面
-////		/*
-//		if(m!=null) {
-//			request.getSession().setAttribute("M", m);
-//			response.sendRedirect("member/loginSuccess.jsp");
-//		} else {
-//			response.sendRedirect("member/loginError.jsp");
-//		}
-////		*/			
+		System.out.println(password);	 
+		List<member> l = new implMember().queryMember(username, password);
+		
+
+		// 1. 客戶未要求當 member 會員存在時，要導入到其它頁面, query(username, password) 的帳號密碼判斷是否存在
+		/*
+		if(new implMember().query(username, password)) {
+			response.sendRedirect("member/loginSuccess.jsp");
+		} else {			
+			response.sendRedirect("member/loginError.jsp");
+		} 
+		*/
+		// 2. 客戶有要求當 member 會員存在時，要導入到其它頁面, 藉由 session 來抓取 member 的物件，如果存在，導入到指定頁面
+//		/*				
+		if(l.size() != 0)
+		{
+			member[] m=l.toArray(new member[l.size()]);			
+			request.getSession().setAttribute("M", m[0]);					
+			response.sendRedirect("member/loginSuccess.jsp");
+		}
+		else
+		{
+			response.sendRedirect("member/loginError.jsp");
+		}
+//		*/			
 	}
 }

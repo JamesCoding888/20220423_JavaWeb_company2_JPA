@@ -4,9 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>麥當勞點餐系統</title>
 </head>
-<body>
+<style>
+body {
+  background-color: #E6E6FA;
+}
+</style>
+<body>		 
 	<table width=600 align="center" border=1>
 		<tr height=150>
 			<td align="center"><h2>McDonald's</h2><img src="picture\logo\McDonald.png">
@@ -30,5 +35,6 @@
 			<td align="center"><jsp:include page="end.jsp" />
 	
 	</table>
+	
 </body>
 </html>

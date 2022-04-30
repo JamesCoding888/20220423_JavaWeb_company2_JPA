@@ -11,7 +11,10 @@ public interface implPorder {
 	// Read
 	List<porder> queryAll();
 	List<porder> querySum(int Start,int end);
-	// Update
+	porder queryId(int id);
 	
+	// Update
+	void update(porder p);
 	// Delete
+	public void delete(int id);
 }

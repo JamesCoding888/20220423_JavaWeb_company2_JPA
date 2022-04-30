@@ -45,6 +45,7 @@ public class porderDao implements implPorder {
 		List<porder> l = q.getResultList();			
 		return l;
 	}
+
 	@Override
 	public List<porder> querySum(int Start, int end) {
 		EntityManager em = DbConnection.geDb();
@@ -55,5 +56,30 @@ public class porderDao implements implPorder {
 		List<porder> l = q.getResultList();
 		return l;
 	}
-	
+
+	@Override
+	public porder queryId(int id) {
+		EntityManager em = DbConnection.geDb();
+		porder p = em.find(porder.class, id);	
+		return p;
+	}
+	// Update
+	@Override
+	public void update(porder p) {
+		EntityManager em = DbConnection.geDb();
+		EntityTransaction et = em.getTransaction();
+		et.begin();
+		em.merge(p);
+		et.commit();	
+	}
+	// Delete
+	@Override
+	public void delete(int id) {
+		EntityManager em = DbConnection.geDb();
+		porder p = em.find(porder.class, id);	
+		EntityTransaction et = em.getTransaction();
+		et.begin();
+		em.remove(p);
+		et.commit();
+	}
 }

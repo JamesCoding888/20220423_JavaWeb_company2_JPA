@@ -22,7 +22,7 @@ porder p=(porder)session.getAttribute("P");
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>訂單完成</title>
 <SCRIPT LANGUAGE="JavaScript">
 
 <!-- This script and many more are available free online at -->
@@ -37,6 +37,11 @@ print(text)
 </script>
 
 </head>
+<style>
+body {
+  background-color: #E6E6FA;
+}
+</style>
 <body>
 	<table width=600 align=center border=1>
 		<tr height=150>
@@ -91,6 +96,9 @@ print(text)
 				</DIV>
 				
 				</table>
+				<tr>
+					<td colspan=6 align=center>
+					<a href="../member/loginSuccess.jsp">回訂單頁</a>
 		<tr height=50>
 			<td align=center><jsp:include page="../end.jsp"/>
 	

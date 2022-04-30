@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"
     import="model.member"%>
 
-<%
+<%	
 	member m = (member)session.getAttribute("M");
 %>
 
@@ -10,8 +10,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>選單</title>
 </head>
+<style>
+body {
+  background-color: #E6E6FA;
+}
+</style>
+<style>
+body {
+  background-color: #E6E6FA;
+}
+</style>
 <body>
 	<table width=600 align="center" border=1>
 		<tr height=150>
@@ -24,11 +34,11 @@
 				<tr>
 					<td align="center"><a href="../porder/addOrder.jsp">1)新增</a>
 				<tr>
-					<td align="center"><a href="">2)查詢</a>
+					<td align="center"><a href="../porder/queryOrder.jsp">2)查詢</a>
 				<tr>
-					<td align="center"><a href="">3)修改</a>
+					<td align="center"><a href="../porder/updateOrder.jsp">3)修改</a>
 				<tr>
-					<td align="center"><a href="">4)刪除</a>
+					<td align="center"><a href="../porder/deleteOrder.jsp">4)刪除</a>
 			
 			</table>				
 		<tr height=50>

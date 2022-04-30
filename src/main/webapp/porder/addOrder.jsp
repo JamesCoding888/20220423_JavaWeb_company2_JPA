@@ -4,8 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>新增訂單</title>
 </head>
+<style>
+body {
+  background-color: #E6E6FA;
+}
+</style>
 <body>
 	<table width=600 align=center border=1>
 		<tr height=150>
