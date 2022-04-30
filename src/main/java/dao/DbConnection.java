@@ -12,7 +12,7 @@ public class DbConnection {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("companyPersistence"); //名稱對應 <persistence-unit name="companyPersistence" >
 		EntityManager em = emf.createEntityManager();
 		System.out.println(em);
-		member m = new member("persistence", "1234", "jj", "taipei", "0800", "99999" );
+		member m = new member("sister", "1234", "jj", "taipei", "0800", "99999" );
 		EntityTransaction et = em.getTransaction();
 		et.begin();
 		em.persist(m);
