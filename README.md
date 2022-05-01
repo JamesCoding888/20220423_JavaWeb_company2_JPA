@@ -8,3 +8,12 @@
 - EntityManager
 - EntityTransaction
 
+
+20220430
+- Create
+- Read 
+- Update
+- Delete
+- Export WAR
+- MySQL Data Export
+
